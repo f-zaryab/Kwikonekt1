@@ -1,3 +1,19 @@
+## Main Scripts
+
+```
+pnpm run lint
+
+pnpm run format
+
+pnpm run prisma:precheck
+
+pnpm run typecheck
+
+pnpm run build
+
+pnpm run start
+```
+
 ## Libraries installed
 
 - [Nest/Config](<>): pnpm i --save @nestjs/config
