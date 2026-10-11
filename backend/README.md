@@ -14,6 +14,15 @@ pnpm run build
 pnpm run start
 ```
 
+For seeding
+
+```
+pnpm prisma db seed
+
+pnpm prisma studio
+
+```
+
 ## Libraries installed
 
 - [Nest/Config](<>): pnpm i --save @nestjs/config
@@ -22,7 +31,7 @@ pnpm run start
 - [vite-tsconfig-paths](<>): pnpm add -D vite-tsconfig-paths
 - [Nestjs-Class-Validator](https://www.npmjs.com/package/@nestjs/class-validator): pnpm add @nestjs/class-validator
 - [Nestjs-Class-Transformer](https://www.npmjs.com/package/@nestjs/class-transformer): pnpm add @nestjs/class-transformer
-- [Nestjs-Mapped-Types](): @nestjs/mapped-types
+- [Nestjs-Mapped-Types](<>): @nestjs/mapped-types
 - [Nestjs-Pino](https://www.npmjs.com/package/nestjs-pino): pnpm add nestjs-pino pino-http pino-pretty
 - [Prisma](<>):
   - pnpm add -D prisma@7 @types/pg
@@ -39,3 +48,5 @@ pnpm run start
     - pnpm prisma migrate dev --name replace_categories_with_events (postgres in docker must be running for this step)
     - pnpm prisma generate
     - pnpm prisma studio
+- [Bcryptjs](https://www.npmjs.com/package/bcryptjs): pnpm add bcryptjs
+- [TSX](<>): pnpm add -D tsx

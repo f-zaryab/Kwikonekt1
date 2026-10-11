@@ -41,4 +41,14 @@ export class EventsService {
 
     return event;
   }
+
+  async deleteEvent(id: string, userId: string) {
+    const event = await this.eventsRepo.findEventById(id);
+
+    if (!event || event.userId !== userId) {
+      throw new NotFoundException(`Event with ID ${id} not found`);
+    }
+
+    await this.eventsRepo.deleteEvent(id, userId);
+  }
 }

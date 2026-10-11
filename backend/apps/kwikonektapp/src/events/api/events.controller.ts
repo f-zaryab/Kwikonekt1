@@ -1,11 +1,19 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { EventsService } from '../application/events.service';
 import { CreateEventDto } from './dtos/create-event.dto';
 import { UpdateEventDto } from './dtos/update-event.dto';
 // external
 import { apiResponse } from '@lib/common/utils/api-response.utils';
 
-@Controller('events')
+@Controller('api/events')
 export class EventsController {
   constructor(private readonly eventService: EventsService) {}
 
@@ -25,7 +33,7 @@ export class EventsController {
 
   @Post('/')
   async createEventController(@Body() data: CreateEventDto) {
-    const userID = '0f7c45b2-d34a-4d95-8b52-9a689823868a';
+    const userID = '0a5e0b0d-0f5b-4da1-8dba-b1730890bad3';
 
     const event = await this.eventService.createEvent({
       ...data,
@@ -35,15 +43,24 @@ export class EventsController {
     return apiResponse('Event created successfully', event);
   }
 
-  @Patch('/id')
+  @Patch('/:id')
   async updateEventController(
     @Param('id') id: string,
     @Body() data: UpdateEventDto,
   ) {
-    const userId = '0f7c45b2-d34a-4d95-8b52-9a689823868a';
+    const userId = '0a5e0b0d-0f5b-4da1-8dba-b1730890bad3';
 
     const event = await this.eventService.updateEvent(id, userId, data);
 
     return apiResponse('Event updated successfully', event);
+  }
+
+  @Delete('/:id')
+  async deleteEventController(@Param('id') id: string) {
+    const userId = '0a5e0b0d-0f5b-4da1-8dba-b1730890bad3';
+
+    await this.eventService.deleteEvent(id, userId);
+
+    return apiResponse('Event deleted successfully', null);
   }
 }

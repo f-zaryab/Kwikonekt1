@@ -30,5 +30,5 @@ export abstract class EventsRepository {
     data: UpdateEventData,
   ): Promise<Event | null>;
 
-  abstract deleteEvent(): Promise<void>;
+  abstract deleteEvent(id: string, userId: string): Promise<void>;
 }

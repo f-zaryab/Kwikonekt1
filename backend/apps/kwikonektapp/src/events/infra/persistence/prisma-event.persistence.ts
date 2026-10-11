@@ -58,7 +58,12 @@ export class PrismaEventRepository extends EventsRepository {
     }
   }
 
-  deleteEvent(): Promise<void> {
-    throw new Error('Method not implemented.');
+  async deleteEvent(id: string, userId: string): Promise<void> {
+    await this.prisma.event.delete({
+      where: {
+        id: id,
+        userId: userId,
+      },
+    });
   }
 }
