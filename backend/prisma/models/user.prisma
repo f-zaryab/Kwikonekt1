@@ -6,9 +6,16 @@ model User {
   passwordHash String
   timezone     String   @default("UTC")
   firstName    String
-  LastName     String
+  lastName     String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  // Events created by the host
   events Event[]
+
+  // Bookings made by this user
+  bookings Booking[] @relation("AttendeeBookings")
+
+  // Bookings hosted by this user
+  hostedBookings Booking[] @relation("HostedBookings")
 }

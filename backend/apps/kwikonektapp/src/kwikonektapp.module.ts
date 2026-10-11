@@ -4,9 +4,10 @@ import { KwikonektappService } from './kwikonektapp.service';
 // Shared Lib
 import { ConfigModule } from '@lib/common/config/config.module';
 import { LoggerModule } from '@lib/common/logger/logger.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
-  imports: [ConfigModule, LoggerModule],
+  imports: [ConfigModule, LoggerModule, EventsModule],
   controllers: [KwikonektappController],
   providers: [KwikonektappService],
 })

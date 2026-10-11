@@ -1,0 +1,46 @@
+// Booking -------------------------------------
+model Booking {
+  id                    String              @id @default(uuid())
+  slug                  String              @unique @default(uuid())
+  title                 String
+  meetingLink           String?
+  guestName             String
+  guestEmail            String
+  startTime             DateTime            @db.Timestamptz(3)
+  endTime               DateTime            @db.Timestamptz(3)
+  status                BookingStatus       @default(PENDING)
+  guestAttendanceStatus ParticipationStatus @default(AWAITING_RESPONSE)
+  hostAttendanceStatus  ParticipationStatus @default(AWAITING_RESPONSE)
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  // Event
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id])
+
+  // Host
+  hostId String
+  host   User   @relation("HostedBookings", fields: [hostId], references: [id])
+
+  // Optional registered attendee
+  attendeeId String?
+  attendee   User?   @relation("AttendeeBookings", fields: [attendeeId], references: [id])
+
+  @@index([hostId, startTime])
+  @@index([eventId])
+  @@index([guestEmail])
+  @@index([attendeeId])
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum ParticipationStatus {
+  AWAITING_RESPONSE
+  ATTENDING
+  NOT_ATTENDING
+}

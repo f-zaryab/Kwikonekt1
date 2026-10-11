@@ -1,17 +1,20 @@
 // Event -------------------------------------
 model Event {
   id              String   @id @default(uuid())
-  slug            String   @unique
+  slug            String
   title           String
   description     String?
   durationMinutes Int      @default(30)
-  meetingLink     String?
   isActive        Boolean  @default(true)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
+  // Host
   userId String
   user   User   @relation(fields: [userId], references: [id])
+
+  // Bookings
+  bookings Booking[]
 
   @@unique([userId, slug])
 }
