@@ -102,9 +102,9 @@ describe('EventsController', () => {
         new NotFoundException('Event not found'),
       );
 
-      await expect(
-        controller.getEventByIdController(invalidId),
-      ).rejects.toThrow(NotFoundException);
+      const result = controller.getEventByIdController(invalidId);
+
+      await expect(result).rejects.toThrow(NotFoundException);
     });
   });
 
