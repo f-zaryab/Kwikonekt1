@@ -8,6 +8,7 @@ import { PrismaModule } from '@lib/common/database/prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
+  controllers: [EventsController],
   providers: [
     EventsService,
     {
@@ -15,6 +16,5 @@ import { PrismaModule } from '@lib/common/database/prisma/prisma.module';
       useClass: PrismaEventRepository,
     },
   ],
-  controllers: [EventsController],
 })
 export class EventsModule {}

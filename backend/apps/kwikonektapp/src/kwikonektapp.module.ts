@@ -5,9 +5,10 @@ import { KwikonektappService } from './kwikonektapp.service';
 import { ConfigModule } from '@lib/common/config/config.module';
 import { LoggerModule } from '@lib/common/logger/logger.module';
 import { EventsModule } from './events/events.module';
+import { BookingsModule } from './bookings/bookings.module';
 
 @Module({
-  imports: [ConfigModule, LoggerModule, EventsModule],
+  imports: [ConfigModule, LoggerModule, EventsModule, BookingsModule],
   controllers: [KwikonektappController],
   providers: [KwikonektappService],
 })
