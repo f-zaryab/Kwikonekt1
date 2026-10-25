@@ -21,7 +21,11 @@ export const metadata: Metadata = {
   description: "Instant meeting Schdeular",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={commissioner.variable} {...mantineHtmlProps}>
       <head>
